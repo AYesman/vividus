@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 the original author or authors.
+ * Copyright 2019-2022 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,15 @@ public class MobileAppElementActions implements ElementActions
     public MobileAppElementActions(GenericWebDriverManager genericWebDriverManager)
     {
         this.genericWebDriverManager = genericWebDriverManager;
+    }
+
+    public String getTagName(WebElement element)
+    {
+        /*
+         * For Android platform the WebElement.getTagName() method returns content description of the element:
+         * https://github.com/appium/appium-uiautomator2-server/blob/master/app/src/main/java/io/appium/uiautomator2/model/UiObject2Element.java#L58
+         */
+        return genericWebDriverManager.isAndroidNativeApp() ? element.getDomAttribute("class") : element.getTagName();
     }
 
     @Override

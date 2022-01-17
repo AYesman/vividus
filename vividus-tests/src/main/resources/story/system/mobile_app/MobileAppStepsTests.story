@@ -285,6 +285,21 @@ When I scan barcode from screen and save result to scenario variable `qrCodeLink
 Then `${qrCodeLink}` is = `https://github.com/vividus-framework/vividus`
 
 
+Scenario: Verify step: 'When I set value of slider located '$locator' to '$percent' percent'
+When I tap on element located `accessibilityId(menuToggler)`
+When I tap on element located `xpath(<menuSliderXpath>)`
+When I wait until element located `accessibilityId(zeroToHundredSlider)` appears
+When I set value of slider located `accessibilityId(zeroToHundredSlider)` to `15`
+When I save `${value-attribute}` attribute value of element located `accessibilityId(zeroToHundredSliderPosition)` to scenario variable `sliderState`
+Then `${sliderState}` matches `(14|15|16)`
+When I set value of slider located `accessibilityId(zeroToHundredSlider)` to `74`
+When I save `${value-attribute}` attribute value of element located `accessibilityId(zeroToHundredSliderPosition)` to scenario variable `sliderState`
+Then `${sliderState}` matches `(73|74|75)`
+When I set value of slider located `accessibilityId(zeroToHundredSlider)` to `7`
+When I save `${value-attribute}` attribute value of element located `accessibilityId(zeroToHundredSliderPosition)` to scenario variable `sliderState`
+Then `${sliderState}` matches `(6|7|8)`
+
+
 Scenario: Verify step: 'When I long press $key key'
 Meta:
     @targetPlatform android

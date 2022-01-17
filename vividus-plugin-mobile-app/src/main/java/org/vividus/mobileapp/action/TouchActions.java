@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2021 the original author or authors.
+ * Copyright 2019-2022 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -198,6 +198,22 @@ public class TouchActions
                 mobileApplicationConfiguration.getSwipeVerticalXPosition(), swipeArea.getPoint()), swipeDuration);
     }
 
+    /**
+     * Performs swipe by coordinates with duration
+     *
+     * @param coordinates the {@link SwipeCoordinates}
+     * @param swipeDuration the swipe duration in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format
+     */
+    public void swipe(SwipeCoordinates coordinates, Duration swipeDuration)
+    {
+        newTouchActions()
+                .press(point(coordinates.getStart()))
+                .waitAction(waitOptions(swipeDuration))
+                .moveTo(point(coordinates.getEnd()))
+                .release()
+                .perform();
+    }
+
     private BufferedImage takeScreenshot()
     {
         try
@@ -208,16 +224,6 @@ public class TouchActions
         {
             throw new UncheckedIOException(e);
         }
-    }
-
-    private void swipe(SwipeCoordinates coordinates, Duration swipeDuration)
-    {
-        newTouchActions()
-                .press(point(coordinates.getStart()))
-                .waitAction(waitOptions(swipeDuration))
-                .moveTo(point(coordinates.getEnd()))
-                .release()
-                .perform();
     }
 
     private static Point getCenter(WebElement element)

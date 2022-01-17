@@ -1,6 +1,7 @@
 {transformer=FROM_LANDSCAPE}
 |textElementXpath           |//android.widget.TextView                            |
 |menuButtonXpath            |//android.widget.TextView[@text='Button']            |
+|menuSliderXpath            |//android.widget.TextView[@text='Slider']            |
 |menuInputXpath             |//android.widget.TextView[@text='Input']             |
 |nameDisplayXpath           |//android.widget.TextView[@text='${text}']           |
 |menuQrCodeXpath            |//android.widget.TextView[@text='QR Code']           |

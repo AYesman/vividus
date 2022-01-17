@@ -1,6 +1,7 @@
 {transformer=FROM_LANDSCAPE}
 |textElementXpath           |//XCUIElementTypeStaticText                            |
 |menuButtonXpath            |//XCUIElementTypeButton[@name="Button"]                |
+|menuSliderXpath            |//XCUIElementTypeButton[@name="Slider"]                |
 |menuInputXpath             |//XCUIElementTypeButton[@name="Input"]                 |
 |nameDisplayXpath           |//XCUIElementTypeTextField[@value='${text}']           |
 |menuQrCodeXpath            |//XCUIElementTypeButton[@name="QR Code"]               |
